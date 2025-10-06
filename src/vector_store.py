@@ -1,10 +1,12 @@
 # Vector store management using FAISS.
 
 from typing import List
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 import logging
+from src.config import EMBEDDING_MODEL
+
 
 logger = logging.getLogger(__name__)
 
@@ -12,7 +14,7 @@ logger = logging.getLogger(__name__)
 class VectorStoreManager:
     # Manage FAISS vector store for document embeddings.
     
-    def __init__(self, embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"):
+    def __init__(self, embedding_model: str = EMBEDDING_MODEL):
         # Initialize vector store manager.
         logger.info(f"Initializing embeddings with model: {embedding_model}")
         self.embeddings = HuggingFaceEmbeddings(

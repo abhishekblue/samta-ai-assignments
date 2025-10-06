@@ -1,13 +1,12 @@
 # Handle document loading and text processing.
 
 from typing import List
-from langchain.document_loaders import PyPDFLoader, Docx2txtLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 import logging
 
 logger = logging.getLogger(__name__)
-
 
 class DocumentProcessor:
     # Process PDF and Word documents into text chunks.
