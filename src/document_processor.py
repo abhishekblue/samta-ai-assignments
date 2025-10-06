@@ -1,5 +1,6 @@
 # Handle document loading and text processing.
 
+import os
 from typing import List
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -21,6 +22,9 @@ class DocumentProcessor:
     
     def load_pdf(self, pdf_path: str) -> List[Document]:
         # Load and split PDF document.
+        if not os.path.exists(pdf_path):
+            raise FileNotFoundError(f"PDF file not found: {pdf_path}")
+        
         logger.info(f"Loading PDF: {pdf_path}")
         loader = PyPDFLoader(pdf_path)
         documents = loader.load()
@@ -28,6 +32,8 @@ class DocumentProcessor:
     
     def load_word(self, word_path: str) -> List[Document]:
         # Load and split Word document.
+        if not os.path.exists(word_path):
+            raise FileNotFoundError(f"Word file not found: {word_path}")
         logger.info(f"Loading Word document: {word_path}")
         loader = Docx2txtLoader(word_path)
         documents = loader.load()

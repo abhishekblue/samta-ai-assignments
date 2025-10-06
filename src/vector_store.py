@@ -25,6 +25,8 @@ class VectorStoreManager:
     
     def create_vector_store(self, documents: List[Document]) -> FAISS:
         # Create FAISS vector store from documents.
+        if not documents:
+            raise ValueError("Cannot create vector store from empty documents list")
         logger.info(f"Creating vector store with {len(documents)} documents")
         self.vector_store = FAISS.from_documents(
             documents=documents,

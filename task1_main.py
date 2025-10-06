@@ -66,18 +66,24 @@ def main():
     logger.info("="*50 + "\n")
     
     while True:
-        question = input("\nQuestion: ").strip()
+        try:
+            question = input("\nQuestion: ").strip()
+            
+            if question.lower() in ['quit', 'exit', 'q']:
+                break
+            
+            if not question:
+                continue
+            
+            result = rag_engine.query(question)
+            
+            print(f"\nAnswer: {result['answer']}\n")
+            print(f"Sources: {len(result['sources'])} documents used")
         
-        if question.lower() in ['quit', 'exit', 'q']:
+        except KeyboardInterrupt:
+            logger.info("\nExiting...")
             break
-        
-        if not question:
-            continue
-        
-        result = rag_engine.query(question)
-        
-        print(f"\nAnswer: {result['answer']}\n")
-        print(f"Sources: {len(result['sources'])} documents used")
+
 
 
 if __name__ == "__main__":
