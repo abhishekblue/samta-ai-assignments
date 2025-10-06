@@ -62,6 +62,10 @@ The repository is organized as follows:
     ├── rag_engine.py         # Implements the RAG logic
     └── vector_store.py       # Manages vector database operations
 ```
+## Branches
+
+- `main` - Latest stable version
+- `feature/error-handling` - Enhanced error handling and input validation
 
 ## License
 
