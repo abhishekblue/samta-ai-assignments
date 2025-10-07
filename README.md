@@ -67,6 +67,3 @@ The repository is organized as follows:
 - `main` - Latest stable version
 - `feature/error-handling` - Enhanced error handling and input validation
 
-## License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details. (Note: A `LICENSE` file is not currently present in the repository. It is recommended to add one.)
